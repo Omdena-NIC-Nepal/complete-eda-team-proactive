@@ -41,10 +41,16 @@ jobs:
           
         echo "Grade: $GRADE/100"
         echo "GRADE=$GRADE" >> $GITHUB_ENV
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+          name: my-artifact
+          path: path/to/artifact
 
     - name: Create grade summary
       run: |
         echo "## Assignment Grade: ${{ env.GRADE }}/100" > grade_summary.md
+    
 
     - name: Upload grade summary
       uses: actions/upload-artifact@v2
